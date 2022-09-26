@@ -103,6 +103,25 @@ export default class Game extends Component {
     this.setState({ isDes: true });
   };
 
+  handleReset = () => {
+    this.setState({
+      history: [
+        {
+          squares: Array(9).fill(null),
+          currentCoordinate: '',
+          currentPlayer: true,
+          currentSelected: null,
+          winning: [],
+        },
+      ],
+      stepNumber: 0,
+      xIsNext: true,
+      row: '',
+      col: '',
+      isDes: true,
+    });
+  };
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -174,10 +193,11 @@ export default class Game extends Component {
                 document.getElementById('row').value
               )
             }
-            style={{ marginTop: '10px' }}
+            style={{ marginTop: '10px', marginRight: '20px' }}
           >
             Apply
           </button>
+          <button onClick={this.handleReset}>Reset</button>
         </div>
         <div className="game">
           <div className="game-board">
