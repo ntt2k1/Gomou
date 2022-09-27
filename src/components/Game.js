@@ -20,6 +20,7 @@ export default class Game extends Component {
       row: '',
       col: '',
       isDes: true,
+      isDisplayGame: false,
     };
   }
   checkOccurrence = (array, element) => {
@@ -90,8 +91,16 @@ export default class Game extends Component {
       history: [
         {
           squares: Array(col * row).fill(null),
+          currentCoordinate: '',
+          currentPlayer: true,
+          currentSelected: null,
+          winning: [],
         },
       ],
+      stepNumber: 0,
+      xIsNext: true,
+      isDes: true,
+      isDisplayGame: true,
     });
   };
 
@@ -103,7 +112,9 @@ export default class Game extends Component {
     this.setState({ isDes: true });
   };
 
-  handleReset = () => {
+  handleReset = (col, row) => {
+    col.value = null;
+    row.value = null;
     this.setState({
       history: [
         {
@@ -119,6 +130,7 @@ export default class Game extends Component {
       row: '',
       col: '',
       isDes: true,
+      isDisplayGame: false,
     });
   };
 
@@ -145,8 +157,13 @@ export default class Game extends Component {
             } chooses {${step.currentCoordinate.x},${step.currentCoordinate.y}}`
           : 'Go to game start';
         return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <li key={move} style={{ textAlign: 'left' }}>
+            <button
+              style={{ width: '350px' }}
+              onClick={() => this.jumpTo(move)}
+            >
+              {desc}
+            </button>
           </li>
         );
       });
@@ -179,7 +196,7 @@ export default class Game extends Component {
     }
 
     return (
-      <>
+      <div style={{ textAlign: 'center' }}>
         <div className="inputSize">
           <div>Input Col:</div>
           <input id="col" type="number" />
@@ -197,9 +214,21 @@ export default class Game extends Component {
           >
             Apply
           </button>
-          <button onClick={this.handleReset}>Reset</button>
+          <button
+            onClick={() =>
+              this.handleReset(
+                document.getElementById('col'),
+                document.getElementById('row')
+              )
+            }
+          >
+            Reset
+          </button>
         </div>
-        <div className="game">
+        <div
+          className="game"
+          style={{ display: this.state.isDisplayGame ? '' : 'none' }}
+        >
           <div className="game-board">
             <Board
               squares={current.squares}
@@ -222,7 +251,7 @@ export default class Game extends Component {
             <ol>{moves}</ol>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

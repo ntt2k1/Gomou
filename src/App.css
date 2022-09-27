@@ -20,7 +20,7 @@ ul {
 
 .square {
   background: #fff;
-  border: 1px solid #999;
+  border: 3px solid rgb(226, 135, 7);
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -45,8 +45,56 @@ ul {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .game-info {
   margin-left: 20px;
+  width: 400px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.credit {
+  text-align: center;
+  color: black;
+  font-weight: 900;
+  text-shadow: 1px 1px red;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  color: black;
+  font-weight: 900;
+  animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    text-shadow: -5px -5px 0 #2943d1, 5px 5px 0 #f00;
+  }
+
+  25% {
+    text-shadow: 5px 5px 0 #2943d1, -5px -5px 0 #f00;
+  }
+
+  50% {
+    text-shadow: 5px -5px 0 #2943d1, -5px 5px 0 #f00;
+  }
+
+  75% {
+    text-shadow: -5px 5px 0 #2943d1, 5px -5px 0 #f00;
+  }
+
+  100% {
+    text-shadow: 5px 5px 0 #2943d1, -5px -5px 0 #f00;
+  }
 }
