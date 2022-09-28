@@ -82,7 +82,7 @@ export default class Game extends Component {
 
   handleApplyClick = (col, row) => {
     if (col < 5 || row < 5) {
-      alert('Column and row count must be >= 5, try again');
+      alert('Column and row count must be >= 5, try again ( ･ั﹏･ั)');
       return;
     }
     this.setState({
@@ -201,9 +201,14 @@ export default class Game extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <div className="inputSize">
-          <div>Input Column:</div>
+          <div className="labelInput">Input Column:</div>
+          <div className="labelInput" style={{ color: 'red' }}>
+            (recommended is 30)
+          </div>
           <input id="col" type="number" />
-          <div>Input Row:</div>
+          <br />
+          <br />
+          <div className="labelInput">Input Row:</div>
           <input id="row" type="number" />
           <br />
           <button
@@ -243,7 +248,15 @@ export default class Game extends Component {
             />
           </div>
           <div className="game-info">
-            <div>{status}</div>
+            {winner ? (
+              <div className="title" style={{ fontSize: '50px' }}>
+                {status}
+              </div>
+            ) : (
+              <div style={{ fontSize: '50px', fontWeight: '500' }}>
+                {status}
+              </div>
+            )}
             <br />
             <br />
             <br />

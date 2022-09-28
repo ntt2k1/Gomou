@@ -20,7 +20,7 @@ ul {
 
 .square {
   background: #fff;
-  border: 3px solid rgb(226, 135, 7);
+  border: 2px solid rgb(79, 223, 234);
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -73,6 +73,10 @@ ul {
   color: black;
   font-weight: 900;
   animation: animate 1.5s linear infinite;
+}
+
+.labelInput {
+  font-weight: 700;
 }
 
 @keyframes animate {
