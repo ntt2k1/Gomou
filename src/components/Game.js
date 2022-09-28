@@ -157,7 +157,7 @@ export default class Game extends Component {
             } chooses {${step.currentCoordinate.x},${step.currentCoordinate.y}}`
           : 'Go to game start';
         return (
-          <li key={move} style={{ textAlign: 'left' }}>
+          <li key={move}>
             <button
               style={{ width: '350px' }}
               onClick={() => this.jumpTo(move)}
@@ -180,7 +180,10 @@ export default class Game extends Component {
             : 'Go to game start';
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(array.length - move - 1)}>
+            <button
+              style={{ width: '350px' }}
+              onClick={() => this.jumpTo(array.length - move - 1)}
+            >
               {desc}
             </button>
           </li>
@@ -198,7 +201,7 @@ export default class Game extends Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <div className="inputSize">
-          <div>Input Col:</div>
+          <div>Input Column:</div>
           <input id="col" type="number" />
           <div>Input Row:</div>
           <input id="row" type="number" />
