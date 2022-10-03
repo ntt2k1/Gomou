@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Square from './Square';
-import { ConvertCoordinateToNumber } from '../util/CalculateWinner';
+import Square from '../Square/Square';
+import { ConvertCoordinateToNumber } from '../../util/CalculateWinner';
 
 const Board = ({ squares, onClick, row, col, selectedSquare, winingLine }) => {
   const [board, setBoard] = useState([]);
